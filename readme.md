@@ -3,6 +3,8 @@ Tatsu HuBot
 
 Idea: Setup HuBot inside a Docker container and run it on AWS. Automatically build and deploy it with CirclCI.
 
+[![Circle CI](https://circleci.com/gh/pgarbe/tatsu-hubot.svg?style=svg)](https://circleci.com/gh/pgarbe/tatsu-hubot)
+
 #Run it
 
   docker build -t tatsu .
