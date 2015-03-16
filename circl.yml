@@ -7,6 +7,10 @@ dependencies:
     - docker info
     - docker build -t pgarbe/tatsu-hubot .
 
+test:
+  override:
+    - docker run -d pgarbe/tatsu-hubot
+
 deployment:
   hub:
     branch: master
