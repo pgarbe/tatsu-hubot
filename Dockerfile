@@ -7,7 +7,6 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN npm install -g coffee-script
 RUN npm install -g yo generator-hubot
 
-
 # Create hubot user
 RUN	useradd -d /hubot -m -s /bin/bash -U hubot
 
@@ -16,7 +15,17 @@ USER	hubot
 WORKDIR /hubot
 
 # Install hubot
-RUN yo hubot --owner="Philipp Garbe <pgarbe@autoscout24.com>" --name="Tatsu" --description="Roll, roll, rollercoaster" --defaults
+RUN yo hubot --owner="Tatsu <inside@autoscout24.com>" --name="Tatsu" --description="Roll, roll, rollercoaster" --defaults
+
+# Some adapters / scripts
+RUN npm install hubot-slack --save && npm install
+RUN npm install hubot-standup-alarm --save && npm install
+#RUN npm install hubot-standup-alarm --save && npm install && \
+#        echo '["hubot-standup-alarm"]' > external-scripts.json
+
+# Activate some built-in scripts
+ADD hubot-scripts.json /hubot/
+ADD external-scripts.json /hubot/
 
 # And go
-RUN npm install hubot-slack --save && npm install
+CMD bin/hubot -a slack
