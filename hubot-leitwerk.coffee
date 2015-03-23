@@ -4,16 +4,33 @@
 # Commands:
 #   hubot leitwerk me - Returns the Leonardi Leitwerk lunch menu for today
 module.exports = (robot) ->
+
   robot.respond /(leitwerk).*/i, (msg) ->
+    imageMe msg, (url) ->
+      msg.send url
 
-    now = new Date()
-    day = zero_pad(now.getDate())
-    month = zero_pad(now.getMonth() + 1)
-    year = now.getFullYear()
-    shortyear = year - 2000
+imageMe = (msg, cb) ->
+  msg.http('http://www.leonardi-kg.de/foodmenu/?password=leitwerk&submit=Senden')
+    .get() (err, res, body) ->
+      if response.statusCode == 404
+        cb "Sorry, seems the page has been moved."
+      else
+        images = JSON.parse(body)
+        images = images.responseData?.results
+        if images?.length > 0
+          image = msg.random images
+          cb ensureImageExtension image.unescapedUrl
+        else
+          cb "Sorry, seems the menu hasn't been updated. Try later again."
 
-    leitwerkUrl = "http://leonardi-kg.de/wp-content/uploads/#{year}/#{month}/#{shortyear}#{month}#{day}_Speiseplan_HPM_extern.jpg"
-    msg.send leitwerkUrl
+
+ensureImageExtension = (url) ->
+  ext = url.split('.').pop()
+  if /(png|jpe?g|gif)/i.test(ext)
+    url
+  else
+    "#{url}#.png"
+
 
 
   zero_pad = (x) ->
