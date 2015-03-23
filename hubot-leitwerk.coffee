@@ -2,36 +2,26 @@
 #   Returns the Leonardi Leitwerk lunch menu for today
 #
 # Commands:
-#   hubot leitwerk me - Returns the Leonardi Leitwerk lunch menu for today
+#   hubot leitwerk - Returns the Leonardi Leitwerk lunch menu for today
+
+cheerio = require('cheerio')
+
 module.exports = (robot) ->
 
   robot.respond /(leitwerk).*/i, (msg) ->
-    imageMe msg, (url) ->
-      msg.send url
+    msg.http('http://www.leonardi-kg.de/foodmenu/?password=leitwerk&submit=Senden')
+      .get() (err, res, body) ->
+        try
+          if res.statusCode == 404
+            msg.send "Sorry, seems the page has been moved."
+          else
+            $ = cheerio.load(body)
+            uri = $('#post-content > p > img').first().attr('src')
 
-imageMe = (msg, cb) ->
-  msg.http('http://www.leonardi-kg.de/foodmenu/?password=leitwerk&submit=Senden')
-    .get() (err, res, body) ->
-      if response.statusCode == 404
-        cb "Sorry, seems the page has been moved."
-      else
-        images = JSON.parse(body)
-        images = images.responseData?.results
-        if images?.length > 0
-          image = msg.random images
-          cb ensureImageExtension image.unescapedUrl
-        else
-          cb "Sorry, seems the menu hasn't been updated. Try later again."
+            if uri?.length > 0
+              msg.send uri
+            else
+              msg.send "Sorry, seems the menu hasn't been updated. Try later again."
 
-
-ensureImageExtension = (url) ->
-  ext = url.split('.').pop()
-  if /(png|jpe?g|gif)/i.test(ext)
-    url
-  else
-    "#{url}#.png"
-
-
-
-  zero_pad = (x) ->
-    if x < 10 then '0'+x else ''+x
+        catch error
+          msg.send "And the error is ... " + error

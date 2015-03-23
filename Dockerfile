@@ -25,7 +25,9 @@ RUN npm install hubot-standup-alarm --save && npm install
 ADD hubot-scripts.json /hubot/
 ADD external-scripts.json /hubot/
 
+RUN npm install cheerio --save && npm install
 ADD hubot-leitwerk.coffee /hubot/scripts/
+
 
 # And go
 CMD bin/hubot -a slack
