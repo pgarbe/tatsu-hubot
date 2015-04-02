@@ -30,4 +30,4 @@ ADD hubot-leitwerk.coffee /hubot/scripts/
 
 
 # And go
-CMD ["/bin/hubot", "--adapter", "slack"]
+CMD ["bin/hubot", "--adapter", "slack"]
