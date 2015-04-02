@@ -12,6 +12,8 @@ Idea: Setup HuBot inside a Docker container and run it on AWS. Automatically bui
 3. Start task instances
       aws ecs run-task --cluster default --task-definition hubot:X --count 1
 
+
+
 ### How to build and run it
     docker build -t tatsu .
     docker run -e HUBOT_SLACK_TOKEN=xxx -d tatsu
@@ -29,14 +31,11 @@ Idea: Setup HuBot inside a Docker container and run it on AWS. Automatically bui
 
 
 ### Next steps
-* Build container automatically and deploy to Docker Hub
 * Deploy container automatically to AWS ECS
 * Where to configure passwords (Slack, ...) -> https://aws.amazon.com/blogs/aws/category/ec2-container-service/
 * Persistent brain (Redis?)
 * Deploy EC2 Container Instance via Cloudfront
 
 ### Open issues
-* How to upgrade when task definition changes?
-* Where to store slack token?
-* How detect changes of the dockerfile?
-* Check usage of ecs.config
+* How to upgrade when task definition changes? Stop & Start
+* How detect changes of the dockerfile? Stop & Start
