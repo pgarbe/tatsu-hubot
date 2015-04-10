@@ -8,7 +8,7 @@ cheerio = require('cheerio')
 
 module.exports = (robot) ->
 
-  robot.respond /(leitwerk).*/i, (msg) ->
+  robot.respond /(leitwerk|wos gibtsn heid).*/i, (msg) ->
     msg.http('http://www.leonardi-kg.de/foodmenu/?password=leitwerk&submit=Senden')
       .get() (err, res, body) ->
         try

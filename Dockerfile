@@ -20,13 +20,16 @@ RUN yo hubot --owner="Tatsu <inside@autoscout24.com>" --name="Tatsu" --descripti
 # Some adapters / scripts
 RUN npm install hubot-slack --save && npm install
 RUN npm install hubot-standup-alarm --save && npm install
+RUN npm install hubot-auth --save && npm install
+RUN npm install hubot-google-translate --save && npm install
+RUN npm install hubot-auth --save && npm install
 
 # Activate some built-in scripts
-ADD hubot-scripts.json /hubot/
-ADD external-scripts.json /hubot/
+ADD hubot/hubot-scripts.json /hubot/
+ADD hubot/external-scripts.json /hubot/
 
 RUN npm install cheerio --save && npm install
-ADD hubot-leitwerk.coffee /hubot/scripts/
+ADD hubot/scripts/hubot-leitwerk.coffee /hubot/scripts/
 
 
 # And go
