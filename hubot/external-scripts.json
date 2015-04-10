@@ -11,5 +11,7 @@
   "hubot-shipit",
   "hubot-youtube",
   "hubot-standup-alarm",
-  "hubot-auth"
+  "hubot-auth",
+  "hubot-github",
+  "hubot-alias"
 ]
