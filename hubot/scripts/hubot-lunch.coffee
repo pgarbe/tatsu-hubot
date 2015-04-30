@@ -38,6 +38,7 @@ module.exports = (robot) ->
             menu = menu.replace(/\s{3,}/g, '\n')
 
             if menu?.length > 0
+              msg.send "SnackAttack"
               msg.send menu
             else
               msg.send "Sorry, seems the menu can't be found. Try later again."
@@ -56,7 +57,6 @@ module.exports = (robot) ->
             uri = $('#post-content > p > img').first().attr('src')
 
             if uri?.length > 0
-              msg.send "SnackAttack"
               msg.send uri
             else
               msg.send "Sorry, seems the menu hasn't been updated. Try later again."
