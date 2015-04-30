@@ -3,16 +3,22 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
+
   override:
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker info
-    - docker build -t pgarbe/tatsu-hubot .
+    - docker build -t pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM .
+    - mkdir -p ~/docker; docker save pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM > ~/docker/image.tar
 
 test:
   override:
-    - docker run -d pgarbe/tatsu-hubot
+    - docker run -d pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM
 
 deployment:
   hub:
     branch: master
     commands:
-      - $DEPLOY
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM
