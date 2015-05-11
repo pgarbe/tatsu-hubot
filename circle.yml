@@ -22,3 +22,4 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM
+      - bundle exec rake create_or_update
