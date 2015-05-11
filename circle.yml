@@ -9,7 +9,11 @@ dependencies:
   cache_directories:
     - "~/docker"
 
+  pre:
+    - gem install bundler
+
   override:
+    - bundle install
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker info
     - docker build -t pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM .
