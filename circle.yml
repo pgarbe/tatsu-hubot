@@ -2,14 +2,13 @@ machine:
   services:
     - docker
 
+  ruby:
+    version: 2.0.0
+
 dependencies:
   cache_directories:
     - "~/docker"
 
-  override:
-    - bundle install:
-      timeout: 180 # fail if it takes over 3 minutes (note ':' on previous line)
- 
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker info
