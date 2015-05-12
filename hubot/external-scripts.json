@@ -13,5 +13,6 @@
   "hubot-standup-alarm",
   "hubot-auth",
   "hubot-github",
-  "hubot-alias"
+  "hubot-alias",
+  "hubot-gocd"
 ]
