@@ -2,6 +2,14 @@ FROM ubuntu
 
 RUN apt-get update
 RUN apt-get -y install expect redis-server nodejs npm
+
+RUN apt-get update && \
+    apt-get install -y python-pip && \
+    pip install awscli
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 RUN npm install -g coffee-script
@@ -26,6 +34,7 @@ RUN npm install hubot-auth --save && npm install
 RUN npm install hubot-github --save && npm install
 RUN npm install hubot-alias --save && npm install
 RUN npm install hubot-gocd --save && npm install
+RUN npm install hubot-youtube --save && npm install
 
 
 # Activate some built-in scripts
@@ -37,7 +46,4 @@ ADD hubot/scripts/hubot-leitwerk.coffee /hubot/scripts/
 ADD hubot/scripts/hubot-lunch.coffee /hubot/scripts/
 
 # And go
-CMD ["bin/hubot", "--adapter", "slack"]
-# CMD source env.sh && ./bin/hubot --adapter slack
-# CMD [ "sh", "-c", "source /usr/share/tatsu-hubot/env.sh", "./bin/hubot --adapter slack" ]
-# https://forums.aws.amazon.com/thread.jspa?messageID=616512&#616512
+CMD ["/bin/sh", "-c", "aws s3 cp --region eu-west-1 s3://pgarbe-secrets/env.sh .; . ./env.sh; bin/hubot --adapter slack"]

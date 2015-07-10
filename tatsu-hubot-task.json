@@ -4,5 +4,14 @@
   "cpu": 10,
   "memory": 250,
   "essential": true,
-  "environment": []
+  "port_mappings": [
+     {
+       "container_port": 80,
+       "host_port": 80
+     },
+     {
+       "container_port": 443,
+       "host_port": 443
+     }
+   ]
 }]
