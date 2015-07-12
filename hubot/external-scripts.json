@@ -14,5 +14,6 @@
   "hubot-auth",
   "hubot-github",
   "hubot-alias",
-  "hubot-gocd"
+  "hubot-gocd",
+  "hubot-youtube"
 ]
