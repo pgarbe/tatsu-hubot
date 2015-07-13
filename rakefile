@@ -27,7 +27,7 @@ task :create_or_update do
     SubnetID:               "subnet-7f885626",
     InstanceType:           "t2.micro",
     DesiredCapacity:        "1",
-    MaxSize:                "2"
+    MaxSize:                "1"
   }
   Stacker.create_or_update_stack(CLUSTER_STACK, CLUSTER_TEMPLATE, parameters)
 
