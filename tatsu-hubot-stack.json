@@ -37,6 +37,7 @@
     },
     "EcsElasticLoadBalancer" : {
       "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
+      "DependsOn": ["ECSServiceRole"],
       "Properties" : {
         "Subnets" : { "Ref" : "SubnetID" },
         "Listeners" : [ {
