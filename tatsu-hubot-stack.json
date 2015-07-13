@@ -55,6 +55,7 @@
     },
     "service": {
       "Type": "AWS::ECS::Service",
+      "DependsOn": ["ECSServiceRole"],
       "Properties" : {
         "Cluster": {"Ref": "ECSCluster"},
         "DesiredCount": "1",
