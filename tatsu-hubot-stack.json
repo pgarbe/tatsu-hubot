@@ -25,12 +25,12 @@
             "Name": "tatsu-hubot",
             "Cpu": "10",
             "Essential": "true",
-            "Image":{ "Fn::Join" : [ "", [ "pgarbe/tatsu-hubot:v_", { "Ref" : "ContainerVersion" } ] ] },
-            "Memory":"250",
+            "Image":"pgarbe/tatsu-hubot:v_@ContainerVersion",
+            "Memory":"250" /*,
             "PortMappings": [
               { "HostPort": 80, "ContainerPort": 80 },
               { "HostPort": 443, "ContainerPort": 443 }
-            ]
+            ]*/
           }
         ]
       }
