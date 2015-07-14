@@ -35,7 +35,7 @@ RUN npm install hubot-github --save && npm install
 RUN npm install hubot-alias --save && npm install
 RUN npm install hubot-gocd --save && npm install
 RUN npm install hubot-youtube --save && npm install
-
+RUN npm install hubot-s3-brain --save && npm install
 
 # Activate some built-in scripts
 ADD hubot/hubot-scripts.json /hubot/

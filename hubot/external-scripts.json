@@ -15,5 +15,6 @@
   "hubot-github",
   "hubot-alias",
   "hubot-gocd",
-  "hubot-youtube"
+  "hubot-youtube",
+  "hubot-s3-brain"
 ]
