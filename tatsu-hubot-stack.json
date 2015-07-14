@@ -56,18 +56,18 @@
     },
     "service": {
       "Type": "AWS::ECS::Service",
-      "DependsOn": ["ECSServiceRole", "EcsElasticLoadBalancer"],
+      /*"DependsOn": ["ECSServiceRole", "EcsElasticLoadBalancer"],*/
       "Properties" : {
         "Cluster": {"Ref": "ECSCluster"},
         "DesiredCount": "1",
-        "LoadBalancers": [
+        /*"LoadBalancers": [
           {
             "ContainerName": "tatsu-hubot",
             "ContainerPort": "80",
             "LoadBalancerName" : { "Ref" : "EcsElasticLoadBalancer" }
           }
         ],
-        "Role" : {"Ref":"ECSServiceRole"},
+        "Role" : {"Ref":"ECSServiceRole"},*/
         "TaskDefinition" : {"Ref":"taskdefinition"}
       }
     },
