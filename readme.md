@@ -31,8 +31,5 @@ Idea: Setup HuBot inside a Docker container and run it on AWS. Automatically bui
 
 
 ### Next steps
-* Deploy container automatically to AWS ECS
-* Where to configure passwords (Slack, ...) -> https://aws.amazon.com/blogs/aws/category/ec2-container-service/
 * Persistent brain (Redis?)
-* Deploy EC2 Container Instance via Cloudfront
 * Rights & Roles
