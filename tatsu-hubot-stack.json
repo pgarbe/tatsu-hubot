@@ -35,7 +35,7 @@
         ]
       }
     },
-    "EcsElasticLoadBalancer" : {
+    /*"EcsElasticLoadBalancer" : {
       "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
       "DependsOn": ["ECSServiceRole"],
       "Properties" : {
@@ -53,7 +53,7 @@
           "Timeout" : "5"
         }
       }
-    },
+    },*/
     "service": {
       "Type": "AWS::ECS::Service",
       /*"DependsOn": ["ECSServiceRole", "EcsElasticLoadBalancer"],*/
