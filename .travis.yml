@@ -1,1 +1,17 @@
+language: ruby
+rvm:
+ - "2.0.0"
 dist: trusty
+
+install:
+  - gem install bundler
+  - bundle install
+  
+script:
+  - docker info
+  - docker build -t pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM .
+
+deploy:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - docker push pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM
+  - bundle exec rake create_or_update
