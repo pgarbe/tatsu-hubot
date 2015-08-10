@@ -4,6 +4,8 @@ Tatsu HuBot
 Idea: Setup HuBot inside a Docker container and run it on AWS. Automatically build and deploy it with CirclCI.
 
 [![Circle CI](https://circleci.com/gh/pgarbe/tatsu-hubot.svg?style=svg)](https://circleci.com/gh/pgarbe/tatsu-hubot)
+[![Travis CI](https://travis-ci.org/pgarbe/tatsu-hubot.svg?branch=master)](https://travis-ci.org/pgarbe/tatsu-hubot)
+
 
 ### Deploy manual to AWS ECS
 1. Setup new EC2 Container Instance as described [here](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_GetStarted.html)
