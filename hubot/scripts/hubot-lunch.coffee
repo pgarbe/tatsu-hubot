@@ -35,7 +35,7 @@ module.exports = (robot) ->
           else
             $ = cheerio.load(body)
             menu = $('.tx_in2wm_show_all_menu_day.today').text()
-            menu = menu.replace(/\s{3,}/g, '\n')
+            # menu = menu.replace(/\s{3,}/g, '\n')
 
             if menu?.length > 0
               msg.send "SnackAttack"

@@ -42,7 +42,6 @@ ADD hubot/hubot-scripts.json /hubot/
 ADD hubot/external-scripts.json /hubot/
 
 RUN npm install cheerio --save && npm install
-ADD hubot/scripts/hubot-leitwerk.coffee /hubot/scripts/
 ADD hubot/scripts/hubot-lunch.coffee /hubot/scripts/
 
 # And go
