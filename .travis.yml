@@ -1,12 +1,7 @@
-sudo: required
-
 language: ruby
-rvm:
- - "2.0.0"
-
+sudo: required
 services:
   - docker
-
 install:
   - gem install bundler
   - bundle install
