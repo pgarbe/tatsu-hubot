@@ -1,11 +1,11 @@
 sudo: required
 
-services:
-  - docker
-
 language: ruby
 rvm:
  - "2.0.0"
+
+services:
+  - docker
 
 install:
   - gem install bundler
