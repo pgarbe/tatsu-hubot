@@ -8,9 +8,9 @@ install:
   
 script:
   - docker info
-  - docker build -t pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM .
+  - docker build -t pgarbe/tatsu-hubot:v_TRAVIS_BUILD_NUMBER .
 
 deploy:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - docker push pgarbe/tatsu-hubot:v_$CIRCLE_BUILD_NUM
+  - docker login -e DOCKER_EMAIL -u DOCKER_USER -p DOCKER_PASS
+  - docker push pgarbe/tatsu-hubot:v_TRAVIS_BUILD_NUMBER
   - bundle exec rake create_or_update
