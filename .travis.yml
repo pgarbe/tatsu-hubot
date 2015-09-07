@@ -1,7 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
 language: ruby
 rvm:
  - "2.0.0"
-dist: trusty
 
 install:
   - gem install bundler
