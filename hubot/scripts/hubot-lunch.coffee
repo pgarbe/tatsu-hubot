@@ -59,7 +59,11 @@ module.exports = (robot) ->
             if uri?.length > 0
               msg.send uri
             else
-              msg.send "Sorry, seems the menu hasn't been updated. Try later again."
+              uri = $('#foodmenu-container > a').first().attr('href')
+              if uri?.length > 0
+                msg.send uri
+              else
+                msg.send "Sorry, seems the menu hasn't been updated. Try later again."
 
         catch error
           msg.send "And the error is ... " + error
